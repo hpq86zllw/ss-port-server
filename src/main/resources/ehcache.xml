@@ -1,4 +1,4 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
-    <cache name="session" eternal="false" timeToIdleSeconds="604800" maxEntriesLocalHeap="10000" />
-    <cache name="http" eternal="false" timeToIdleSeconds="1800" maxEntriesLocalHeap="10000" />
+    <cache name="session" eternal="false" timeToIdleSeconds="604800" maxEntriesLocalHeap="0" />
+    <cache name="http" eternal="false" timeToIdleSeconds="1800" maxEntriesLocalHeap="0" />
 </ehcache>
