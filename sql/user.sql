@@ -1,0 +1,5 @@
+CREATE TABLE user(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    openid VARCHAR(50) UNIQUE,
+    nickname VARCHAR(100)
+);
