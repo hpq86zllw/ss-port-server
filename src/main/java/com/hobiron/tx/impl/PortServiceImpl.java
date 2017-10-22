@@ -15,8 +15,10 @@ import com.hobiron.bean.Agent;
 import com.hobiron.bean.Port;
 import com.hobiron.bean.PortFlow;
 import com.hobiron.bean.Result;
+import com.hobiron.bean.User;
 import com.hobiron.dao.AgentDao;
 import com.hobiron.dao.PortDao;
+import com.hobiron.dao.UserDao;
 import com.hobiron.exception.NoAvailablePortExcpetion;
 import com.hobiron.http.HttpFactory;
 import com.hobiron.tx.PortService;
@@ -28,6 +30,8 @@ public class PortServiceImpl implements PortService {
     private PortDao portDao;
     @Autowired
     private AgentDao agentDao;
+    @Autowired
+    private UserDao userDao;
     @Autowired
     private HttpFactory httpFactory;
 
@@ -42,7 +46,8 @@ public class PortServiceImpl implements PortService {
     @Override
     public void applyPort(String openid) {
 
-        int resultNum = portDao.updateAvailablePortToAssignedByOpenid(openid, RandomStringUtils.randomAlphanumeric(7));
+        User user = userDao.selectUserByOpenid(openid);
+        int resultNum = portDao.updateAvailablePortToAssigned(user.getId(), RandomStringUtils.randomAlphanumeric(7));
         if (resultNum != 1) {
             throw new NoAvailablePortExcpetion("No port to apply");
         }
@@ -58,7 +63,8 @@ public class PortServiceImpl implements PortService {
         Port port = getPort(openid);
         disablePort(port);
 
-        portDao.updateAssignedPortToAvailableByOpenid(openid);
+        User user = userDao.selectUserByOpenid(openid);
+        portDao.updateAssignedPortToAvailable(user.getId());
 
     }
 

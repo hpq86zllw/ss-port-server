@@ -8,9 +8,9 @@ public interface PortDao {
 
     Port selectPortByOpenid(String openid);
 
-    int updateAvailablePortToAssignedByOpenid(String openid, String password);
+    int updateAvailablePortToAssigned(int userId, String password);
 
-    int updateAssignedPortToAvailableByOpenid(String openid);
+    int updateAssignedPortToAvailable(int userId);
 
     int increatePortUsedFlowBytes(int portNo, String token, long bytes);
 

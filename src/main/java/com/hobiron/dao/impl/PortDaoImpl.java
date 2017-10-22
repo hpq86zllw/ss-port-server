@@ -31,17 +31,16 @@ public class PortDaoImpl implements PortDao {
     }
 
     @Override
-    public int updateAvailablePortToAssignedByOpenid(String openid, String password) {
+    public int updateAvailablePortToAssigned(int userId, String password) {
         return jdbcTemplate.update(
-                "UPDATE port SET user_id = ( SELECT id from user where openid = ? ), password = ? WHERE user_id is null LIMIT 1",
-                openid, password);
+                "UPDATE port SET user_id = ?, password = ? WHERE NOT EXIST ( SELECT 1 FROM port WHERE user_id = ? ) AND user_id is null LIMIT 1",
+                userId, password, userId);
     }
 
     @Override
-    public int updateAssignedPortToAvailableByOpenid(String openid) {
+    public int updateAssignedPortToAvailable(int userId) {
         return jdbcTemplate.update(
-                "UPDATE port SET user_id = NULL, used_flow_bytes = 0, password = NULL WHERE user_id = ( SELECT id FROM user WHERE openid = ? )",
-                openid);
+                "UPDATE port SET user_id = NULL, used_flow_bytes = 0, password = NULL WHERE user_id = ?", userId);
     }
 
     @Override
