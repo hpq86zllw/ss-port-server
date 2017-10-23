@@ -22,7 +22,7 @@ public class PortDaoImpl implements PortDao {
 
         try {
             return jdbcTemplate.queryForObject(
-                    "SELECT p.used_flow_bytes, p.total_flow_bytes, a.address, p.port_no, p.password, a.encrypt_method FROM port p, agent a WHERE user_id = ( SELECT id FROM user WHERE openid = ? ) AND p.agent_id = a.id",
+                    "SELECT p.used_flow_bytes, p.total_flow_bytes, a.ss_host, p.port_no, p.password, a.ss_encrypt_method FROM port p, agent a WHERE user_id = ( SELECT id FROM user WHERE openid = ? ) AND p.agent_id = a.id",
                     new BeanPropertyRowMapper<>(Port.class), openid);
         } catch (EmptyResultDataAccessException e) {
             return null;
@@ -66,7 +66,7 @@ public class PortDaoImpl implements PortDao {
     @Override
     public Port selectPortByTokenAndPortNo(String token, int portNo) {
         return jdbcTemplate.queryForObject(
-                "SELECT p.used_flow_bytes, p.total_flow_bytes, a.address, p.port_no, p.password, a.encrypt_method FROM port p, agent a WHERE p.agent_id = ( SELECT id FROM agent WHERE token = ? ) AND p.port_no = ?",
+                "SELECT p.used_flow_bytes, p.total_flow_bytes, a.ss_host, p.port_no, p.password, a.ss_encrypt_method FROM port p, agent a WHERE p.agent_id = ( SELECT id FROM agent WHERE token = ? ) AND p.port_no = ?",
                 new BeanPropertyRowMapper<>(Port.class), token, portNo);
     }
 
