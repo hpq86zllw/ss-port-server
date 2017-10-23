@@ -44,7 +44,7 @@ public class UserPort {
         portDetail.put("usedFlow", port.getFormattedUsedFlow());
         portDetail.put("totalFlow", port.getFormattedTotalFlow());
         portDetail.put("usedFlowPercent", port.getUsedFlowPercent());
-        portDetail.put("address", port.getSsHost());
+        portDetail.put("host", port.getSsHost());
         portDetail.put("portNo", port.getPortNo());
         portDetail.put("password", port.getPassword());
         portDetail.put("encryptMethod", port.getSsEncryptMethod());
