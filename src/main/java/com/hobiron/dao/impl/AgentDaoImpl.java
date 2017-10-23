@@ -29,7 +29,7 @@ public class AgentDaoImpl implements AgentDao {
 
     @Override
     public Agent selectAgentBySsHost(String ssHost) {
-        return jdbcTemplate.queryForObject("SELECT id, ss_host, ss_encrypt_method, token FROM agent WHERE ss_host = ?",
+        return jdbcTemplate.queryForObject("SELECT id, ss_host, ss_encrypt_method, base_url, token FROM agent WHERE ss_host = ?",
                 new BeanPropertyRowMapper<>(Agent.class), ssHost);
     }
 
