@@ -33,7 +33,7 @@ public class PortDaoImpl implements PortDao {
     @Override
     public int updateAvailablePortToAssigned(int userId, String password) {
         return jdbcTemplate.update(
-                "UPDATE port SET user_id = ?, password = ? WHERE NOT EXIST ( SELECT 1 FROM port WHERE user_id = ? ) AND user_id is null LIMIT 1",
+                "UPDATE port SET user_id = ?, password = ? WHERE NOT EXISTS ( SELECT 1 FROM port WHERE user_id = ? ) AND user_id is null LIMIT 1",
                 userId, password, userId);
     }
 
