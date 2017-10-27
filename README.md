@@ -4,6 +4,7 @@
 [代理端](https://github.com/hpq86zllw/ss-port-agent)  
 [客户端](https://github.com/hpq86zllw/ss-port-client)  
 ## 运行前  
+运行maven生成jar包  
 使用mvn clean package -Dhome=HOME -Dport=PORT -Dappid=APPID -Dappsecret=APPSECRET  
 HOME 主目录  
 PORT 启动端口  
