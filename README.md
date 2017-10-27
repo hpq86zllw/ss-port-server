@@ -9,7 +9,7 @@ HOME 主目录
 PORT 启动端口  
 APPID 微信小程序appid  
 APPSECRET 微信小程序appsecret  
-##运行方法  
+## 运行方法  
 cp target/ss-port-server-0.0.1.jar HOME  
 cd HOME  
 mkdir logs  
