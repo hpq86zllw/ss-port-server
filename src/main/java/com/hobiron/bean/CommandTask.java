@@ -25,6 +25,10 @@ public class CommandTask implements Runnable {
     public void run() {
 
         logger.info("command:{}", command);
+        if ("ok".equals(command)) {
+            logger.info("Command execute successfully");
+            return;
+        }
         AgentFlow agentFlow = command.convertToAgentFlow();
 
         Map<Integer, Long> portBytesMap = agentFlow.getPortBytesMap();
@@ -32,8 +36,7 @@ public class CommandTask implements Runnable {
         Set<Integer> portBytesMapKeySet = portBytesMap.keySet();
         for (Integer portBytesMapKey : portBytesMapKeySet) {
 
-            PortFlow portFlow = new PortFlow(agentFlow.getToken(), portBytesMapKey,
-                    portBytesMap.get(portBytesMapKey));
+            PortFlow portFlow = new PortFlow(agentFlow.getToken(), portBytesMapKey, portBytesMap.get(portBytesMapKey));
 
             try {
                 logger.info(String.format("portFlow:%s", portFlow));
