@@ -3,10 +3,17 @@
 [服务端](https://github.com/hpq86zllw/ss-port-server)  
 [代理端](https://github.com/hpq86zllw/ss-port-agent)  
 [客户端](https://github.com/hpq86zllw/ss-port-client)  
+## 功能  
+1. 与客户端通信    
+2. 收集由代理端传递过来的端口流量数据  
+3. 向代理端发送命令，如添加端口和删除端口等  
+4. 当用户流量超过最大可用值时，禁用端口  
+## 运行要求  
+只支持python版的ss  
 ## 构建  
-1. 运行maven生成jar包  
+1. 运行maven生成jar包（需要JDK8）  
 使用mvn clean package  
-2. 并创建如下文件夹  
+2. 把target/ss-port-server-0.0.1.jar放在服务端实际运行的服务器中，并创建如下文件夹  
 logs，run，tomcat和config  
 3. 在config文件夹中创建application.properties，在里面配置如下参数  
 port=启动端口  
