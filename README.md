@@ -26,3 +26,8 @@ appid=微信小程序appid
 appsecret=微信小程序appsecret  
 ## 运行方法  
 nohup java -jar ss-port-server-0.0.1.jar &> logs/nohup.out &  
+导入agent.sql，port.sql和user.sql  
+## 导入sql文件方法  
+1. 下载[H2客户端]http://www.h2database.com/html/main.html  
+2. 运行bin/h2.sh，用浏览器访问服务器的8082端口， 连接信息按照源码里application.properties里面datasource信息进行填写  
+3. 复制文件内容进去直接运行即可  
